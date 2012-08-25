@@ -44,7 +44,6 @@
 	</bean>
 
 	<bean id="userBiz" class="com.kurui.kums.right.biz.UserBizImp">
-		<property name="transactionManager" ref="transactionManager" />
 		<property name="userDAO">
 			<ref bean="userDAO" />
 		</property>

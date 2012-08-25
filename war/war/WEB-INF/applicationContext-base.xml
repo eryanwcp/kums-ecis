@@ -3,16 +3,8 @@
 
 <beans default-lazy-init="false" default-autowire="no"
 	default-dependency-check="none">
-	<bean id="dBCHPool" class="com.kurui.kums.base.database.DBCHPool">
-		<property name="dataSource">
-			<ref bean="dataSource" />
-		</property>
-	</bean>
-	<bean id="noUtil" class="com.kurui.kums.base.util.KumsNoUtil">
-		<property name="hibernateTemplate">
-			<ref bean="hibernateTemplate" />
-		</property>
-	</bean>
+
+	
 	<bean id="theFilter"
 		class="com.kurui.kums.base.filters.SetCharacterEncodingFilter">
 		<property name="urls">

@@ -133,6 +133,12 @@
 			</dependency>
 
 
+			<dependency>
+				<groupId>gnujaxp</groupId>
+				<artifactId>gnujaxp</artifactId>
+				<version>1.0.0</version>
+				<scope>provided</scope>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>

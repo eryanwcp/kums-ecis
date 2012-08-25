@@ -52,7 +52,7 @@
 		<init-param>
 			<param-name>config</param-name>
 			<param-value>
-				/WEB-INF/struts-config.xml , /WEB-INF/struts-config-agent.xml, /WEB-INF/struts-config-agent-neo.xml, /WEB-INF/struts-config-system.xml ,
+				/WEB-INF/struts-config.xml , /WEB-INF/struts-config-system.xml ,
 				/WEB-INF/struts-config-right.xml, /WEB-INF/struts-config-upload.xml
 			</param-value>
 		</init-param>
