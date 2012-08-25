@@ -1,4 +1,4 @@
-package com.kurui.kums.ecis.test.employee;
+package com.kurui.kums.ecis.test.ebook;
 
 public class EBook {
 
