@@ -30,43 +30,7 @@
 		</property>
 	</bean>
 
-	<bean name="sysInitBiz"
-		class="com.kurui.kums.system.biz.SysInitBizImp" singleton="false"
-		lazy-init="default" autowire="default" dependency-check="default">
-		<property name="platformDAO">
-			<ref bean="platformDAO" />
-		</property>
-		<property name="companyDAO">
-			<ref bean="companyDAO" />
-		</property>
-		<property name="accountDAO">
-			<ref bean="accountDAO" />
-		</property>
-		<property name="platComAccountDAO">
-			<ref bean="platComAccountDAO" />
-		</property>
-		<property name="paymentToolDAO">
-			<ref bean="paymentToolDAO" />
-		</property>
-		<property name="agentDAO">
-			<ref bean="agentDAO" />
-		</property>
-		<property name="userDAO">
-			<ref bean="userDAO" />
-		</property>
-		<property name="priceReferenceDAO">
-			<ref bean="priceReferenceDAO" />
-		</property>
-		<property name="dataTypeDAO">
-			<ref bean="dataTypeDAO" />
-		</property>
-		<property name="directLevelDAO">
-			<ref bean="directLevelDAO" />
-		</property>
-		<property name="productDAO">
-			<ref bean="productDAO" />
-		</property>
-	</bean>
+	
 
 	<bean name="/system/loginloglist"
 		class="com.kurui.kums.system.action.LoginLogListAction"
