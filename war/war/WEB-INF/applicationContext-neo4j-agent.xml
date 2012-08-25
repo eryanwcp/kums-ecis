@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no" default-dependency-check="none">
+
+	<!--Action -->
+
+	<bean name="/agent/agentNeoList" class="com.kurui.kums.sns.agent.action.AgentNeoListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="agentNeoBiz">
+			<ref bean="agentNeoBiz" />
+		</property>
+	</bean>
+
+	<bean name="agentNeoBiz" class="com.kurui.kums.sns.agent.biz.AgentNeoBizImp"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentDAO">
+			<ref bean="agentDAO" />
+		</property>
+		<property name="agentNeoDAO">
+			<ref bean="agentNeoDAO" />
+		</property>
+	</bean>
+	<bean id="agentNeoDAO" class="com.kurui.kums.sns.agent.dao.AgentNeoDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="graphDbService">
+			<ref bean="graphDbService" />
+		</property>
+	</bean>
+
+</beans>

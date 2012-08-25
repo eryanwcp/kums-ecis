@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+	
+	<import resource="applicationContext_hibernate.xml" />	
+	<import resource="applicationContext-base.xml" />
+	<import resource="applicationContext-right.xml" />
+	<import resource="applicationContext-system.xml" />
+	<import resource="applicationContext-agent.xml" />
+	<import resource="applicationContext-transaction.xml" />
+	<import resource="applicationContext-finance.xml" />
+	<import resource="applicationContext-market.xml" />
+
+	<import resource="applicationContext-neo4j.xml" />
+	<import resource="applicationContext-neo4j-agent.xml" />
+</beans>

@@ -1,0 +1,36 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by ccggyy2002 (Delphi) -->
+
+<struts-config>
+	<form-beans>
+		<form-bean name="agentNeoListForm"
+			type="com.kurui.kums.sns.agent.AgentNeoListForm">
+		</form-bean>
+	</form-beans>
+	<action-mappings>
+		<!--客户Network As Neo4j -->
+		<action name="agentNeoListForm" path="/agent/agentNeoList"
+			parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			validate="false" scope="request">
+			<forward name="listAgent" path="/agent/listAgent.jsp" />
+			<forward name="listAddress"
+				path="/agent/listAgentAddress.jsp" />
+			<forward name="listGrade" path="/agent/listAgentGrade.jsp" />
+			<forward name="listDirectAgent"
+				path="/agent/listDirectAgent.jsp" />
+			<forward name="editAgent" path="/agent/editAgent.jsp" />
+			<forward name="viewAgent" path="/agent/viewAgent.jsp" />
+
+			<forward name="sendMessage"
+				path="/agent/editSendMessage.jsp" />
+			<forward name="listAgentSelect"
+				path="/agent/listAgentSelect.jsp" />
+			<forward name="editAgentSpeed"
+				path="/agent/editAgentSpeed.jsp" />
+			<forward name="viewAgentSpeed"
+				path="/agent/viewAgentSpeed.jsp" />
+		</action>
+</action-mappings>
+	
+</struts-config>
