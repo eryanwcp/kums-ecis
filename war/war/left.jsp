@@ -35,18 +35,9 @@
 						target="mainFrame">修改我的密码</a> </span>
 
 					<span class="title"><a
-						href="<%=path%>/transaction/accountCheckList.do?thisAction=list"
+						href="<%=path%>/ebook/ebookList.do?thisAction=list"
 						target="mainFrame">账户盘点</a> </span>
-					<span class="title"><a
-						href="<%=path%>/finance/financeOrderList.do?thisAction=addLiveOrder"
-						target="mainFrame">管理费用入账</a> </span>
-					<span class="title">				
-							<a href="<%=path%>/finance/financeOrderList.do?thisAction=listLiveOrder" target="mainFrame">管理费用列表</a>
-					</span>
-					
-					<span class="title">	
-							<a href="<%=path%>/transaction/companyList.do?thisAction=list&type=2" target="mainFrame">客户公司列表</a>
-					</span>
+				
 				</div>
 			</div>
 			<div class="closeSiseBar">

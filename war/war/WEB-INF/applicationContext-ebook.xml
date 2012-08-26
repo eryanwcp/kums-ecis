@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+
+	<bean name="/ebook/ebooklist"
+		class="com.kurui.kums.right.action.UserListAction" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="ebookBiz">
+			<ref bean="ebookBiz" />
+		</property>
+	</bean>
+	<bean name="/ebook/ebook"
+		class="com.kurui.kums.right.action.UserAction" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="ebookBiz">
+			<ref bean="ebookBiz" />
+		</property>
+		<property name="rightBiz">
+			<ref bean="rightBiz" />
+		</property>
+		<property name="loginlogBiz">
+			<ref bean="loginlogBiz" />
+		</property>
+	</bean>
+
+	<bean id="ebookBiz" class="com.kurui.kums.right.biz.UserBizImp">
+		<property name="ebookDAO">
+			<ref bean="ebookDAO" />
+		</property>
+	</bean>
+	<bean id="ebookDAO" class="com.kurui.kums.right.dao.UserDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		
+	</bean>
+
+	
+</beans>

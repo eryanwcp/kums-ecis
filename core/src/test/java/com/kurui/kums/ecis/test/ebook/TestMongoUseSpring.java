@@ -4,13 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 
 import junit.framework.TestCase;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.data.document.mongodb.MongoOperations;
 
 public class TestMongoUseSpring extends TestCase{
 	
