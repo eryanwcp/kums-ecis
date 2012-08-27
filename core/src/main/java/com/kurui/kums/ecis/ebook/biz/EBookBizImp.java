@@ -25,17 +25,12 @@ public class EBookBizImp implements EBookBiz {
 	public void deleteEBook(String ebookId) throws AppException {
 		EBook ebook = getEBookById(ebookId);
 		ebook.setStatus(EBook.STATES_0);// 将状态变为无效
-		update(ebook);
+		saveOrUpdate(ebook);
 	}
 
-	public String save(EBook ebook) throws AppException {
-		return ebookDAO.save(ebook);
+	public String saveOrUpdate(EBook ebook) throws AppException {
+		return ebookDAO.saveOrUpdate(ebook);
 	}
-
-	public String update(EBook ebook) throws AppException {
-		return ebookDAO.update(ebook);
-	}
-
 	public EBook getEBookById(String ebookId) throws AppException {
 		return ebookDAO.getEBookById(ebookId);
 	}

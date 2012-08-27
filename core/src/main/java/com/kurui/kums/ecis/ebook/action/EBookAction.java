@@ -38,7 +38,7 @@ public class EBookAction extends BaseAction {
 			// ebook.setMemo(ebookForm.getMemo());
 			ebook.setType(ebookForm.getType());
 			ebook.setStatus(ebookForm.getStatus());
-			String result = ebookBiz.save(ebook);
+			String result = ebookBiz.saveOrUpdate(ebook);
 
 			if (StringUtil.isEmpty(result)==false) {
 				return redirectList(ebook);
@@ -70,7 +70,7 @@ public class EBookAction extends BaseAction {
 				ebook.setType(ebookForm.getType());
 				ebook.setStatus(ebookForm.getStatus());
 
-				String result = ebookBiz.update(ebook);
+				String result = ebookBiz.saveOrUpdate(ebook);
 
 				if (StringUtil.isEmpty(result)==false) {
 					return redirectList(ebook);

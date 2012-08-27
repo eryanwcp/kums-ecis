@@ -1,14 +1,11 @@
 package com.kurui.kums.ecis.ebook.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.document.mongodb.MongoTemplate;
 import org.springframework.data.document.mongodb.query.Criteria;
 import org.springframework.data.document.mongodb.query.Query;
 
-import com.kurui.kums.base.Constant;
-import com.kurui.kums.base.database.Hql;
 import com.kurui.kums.base.exception.AppException;
 import com.kurui.kums.base.util.StringUtil;
 import com.kurui.kums.ecis.ebook.EBook;
@@ -18,7 +15,7 @@ public class EBookDAOImp  implements EBookDAO {
 	private MongoTemplate mongoTemplate;
 
 	public List list(EBookListForm ebookListForm) throws AppException {
-		List<EBook> listEBook = mongoTemplate.getCollection("ebooks",
+		List<EBook> listEBook = mongoTemplate.getCollection("ebook",
 				EBook.class);
 		
 		if(listEBook!=null){
@@ -32,74 +29,48 @@ public class EBookDAOImp  implements EBookDAO {
 
 	public void delete(String id) throws AppException {
 		if (StringUtil.isEmpty(id)==false) {
-//			EBook ebook = (EBook) this.getHibernateTemplate().get(
-//					EBook.class, new Long(id));
-//			this.getHibernateTemplate().delete(ebook);
-		}
-	}
-
-	public String save(EBook ebook) throws AppException {
-		mongoTemplate.save(ebook);
-		return ebook.getId();
-	}
-
-	public String update(EBook ebook) throws AppException {
-		if (StringUtil.isEmpty(ebook.getId())==false) {
-//			mongoTemplate.update(ebook);
-			return ebook.getId();
-		} else{
-			throw new IllegalArgumentException("id isn't a valid argument.");
+			mongoTemplate.findAndRemove("ebook", getEBookByIdQuery(id), EBook.class);
 			
 		}
 	}
 
+	public String saveOrUpdate(EBook ebook) throws AppException {
+		mongoTemplate.save("ebook",ebook);
+//		mongoTemplate.save("ebook",ebook);//当记录不存在时插入，或者是当记录已存在是更新，实际上就是saveorupdate的意思。
+
+//		mongoTemplate.insert(ebook);//当记录不存在时插入，而如果记录存在时则忽略，继续插入。
+
+		return ebook.getId();
+	}
+
+
+
 	public EBook getEBookById(String id) throws AppException {
-		EBook ebook = mongoTemplate.findOne("ebooks",
-				new Query(Criteria.where("id").is(id+"")), EBook.class);
+		EBook ebook = mongoTemplate.findOne("ebook",
+				new Query(Criteria.where("id").is(id)), EBook.class);
 		return ebook;
+	}
+	
+	public Query getEBookByIdQuery(String id){
+		return new Query(Criteria.where("id").is(id));
 	}
 
 	public List<EBook> getEBookList() throws AppException {
-		List<EBook> list = mongoTemplate.getCollection("ebooks",
+		List<EBook> list = mongoTemplate.getCollection("ebook",
 				EBook.class);
 		return list;
 	}
 
 	public List<EBook> getEBookListByType(String ebookTypes)
 			throws AppException {
-		List<EBook> list = new ArrayList<EBook>();
-		Hql hql = new Hql();
-		hql.add(" from EBook p where  1=1 ");
-
-		if (Constant.toString(ebookTypes) != "") {
-			hql.add(" and p.type in(" + ebookTypes + ")");
-		}
-
-		hql.add(" and p.status=" + EBook.STATES_1);
-		hql.add(" order by p.type ");
-//		Query query = this.getQuery(hql);
-//		if (query != null) {
-//			list = query.list();
-//			if (list != null && list.size() > 0) {
-//				return list;
-//			}
-//		}
+		List<EBook> list =mongoTemplate.find("ebook",new Query(Criteria.where("type").in(ebookTypes)),
+				EBook.class);
 		return list;
 	}
 
 	public List<EBook> getValidEBookList() throws AppException {
-		List<EBook> list = new ArrayList<EBook>();
-		Hql hql = new Hql();
-		hql.add(" from EBook p where 1=1 ");
-		hql.add(" and p.status=" + EBook.STATES_1);
-		hql.add(" order by p.type ");
-//		Query query = this.getQuery(hql);
-//		if (query != null) {
-//			list = query.list();
-//			if (list != null && list.size() > 0) {
-//				return list;
-//			}
-//		}
+		List<EBook> list =mongoTemplate.find("ebook",new Query(Criteria.where("status").is(EBook.STATES_1)),
+				EBook.class);
 		return list;
 	}
 

@@ -14,9 +14,7 @@ public interface EBookBiz {
 
 	public void deleteEBook(String ebookId) throws AppException;
 
-	public String save(EBook ebook) throws AppException;
-
-	public String update(EBook ebook) throws AppException;
+	public String saveOrUpdate(EBook ebook) throws AppException;
 
 	public EBook getEBookById(String ebookId)
 			throws AppException;

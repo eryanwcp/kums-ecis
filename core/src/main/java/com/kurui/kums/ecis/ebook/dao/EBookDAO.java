@@ -12,9 +12,7 @@ public interface EBookDAO {
 
 	public void delete(String id) throws AppException;
 
-	public String save(EBook ebook) throws AppException;
-
-	public String update(EBook ebook) throws AppException;
+	public String saveOrUpdate(EBook ebook) throws AppException;
 
 	public EBook getEBookById(String ebookId) throws AppException;
 

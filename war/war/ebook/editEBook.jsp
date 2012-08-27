@@ -12,7 +12,6 @@
 <title>main</title>
 <link href="../_css/reset.css" rel="stylesheet" type="text/css" />
 <link href="../_css/global.css" rel="stylesheet" type="text/css" />
-<c:import url="../page/importDWR.jsp"></c:import>
 <script src="../_js/prototype/common.js" type="text/javascript"></script>
 <script src="../_js/base/FormUtil.js" type="text/javascript"></script>
 </head>
