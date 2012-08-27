@@ -36,7 +36,7 @@
 
 					<span class="title"><a
 						href="<%=path%>/ebook/ebookList.do?thisAction=list"
-						target="mainFrame">账户盘点</a> </span>
+						target="mainFrame">电子书列表</a> </span>
 				
 				</div>
 			</div>

@@ -53,8 +53,10 @@ public class EBookBizImp implements EBookBiz {
 		return ebookDAO.getValidEBookList();
 	}
 
-	public void setEBookDAO(EBookDAO ebookDAO) {
+	public void setEbookDAO(EBookDAO ebookDAO) {
 		this.ebookDAO = ebookDAO;
 	}
+
+
 
 }

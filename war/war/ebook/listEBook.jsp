@@ -96,42 +96,8 @@
 								<table cellpadding="0" cellspacing="0" border="0"
 									class="searchPanel">
 									<tr>
-										<td>分管部门： <html:select property="companyId"
-												styleClass="colorblue2 p_5" style="width:120px;">
-												<html:option value="">选择</html:option>
-												<c:forEach items="${companyList}" var="company">
-													<html:option value="${company.id}">
-														<c:out value="${company.name}" />
-													</html:option>
-												</c:forEach>
-											</html:select>
-										</td>
-										<td>客户： <html:text property="contactWay"
-												styleClass="colorblue2 p_5" style="width:150px;" />
-										</td>
-										<td>类型： <html:select property="type"
-												styleClass="colorblue2 p_5" style="width:80px;">
-												<html:option value="0">
-														请选择
-													</html:option>
-												<html:option value="1">
-														VIP客户
-													</html:option>
-												<html:option value="2">
-														主要客户
-													</html:option>
-												<html:option value="3">
-														普通客户
-													</html:option>
-												<html:option value="4">
-														小客户
-													</html:option>
-												<html:option value="11">
-														潜在客户
-													</html:option>
-											</html:select>
-										</td>
-										<td>来源： <html:text property="knowPlace"
+										
+										<td>关键字： <html:text property="keywords"
 												styleClass="colorblue2 p_5" style="width:150px;" />
 										</td>
 										<td><input type="submit" name="button" id="button"

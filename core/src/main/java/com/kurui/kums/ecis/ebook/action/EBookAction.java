@@ -18,7 +18,6 @@ import com.kurui.kums.right.UserRightInfo;
 
 public class EBookAction extends BaseAction {
 	private EBookBiz ebookBiz;
-	private KumsNoUtil noUtil;
 
 	public ActionForward insert(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
@@ -94,10 +93,6 @@ public class EBookAction extends BaseAction {
 			redirect.addParameter("type", ebook.getType());
 		}
 		return redirect;
-	}
-
-	public void setNoUtil(KumsNoUtil noUtil) {
-		this.noUtil = noUtil;
 	}
 
 	public void setEBookBiz(EBookBiz ebookBiz) {

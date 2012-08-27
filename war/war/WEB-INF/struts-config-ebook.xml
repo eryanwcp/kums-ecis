@@ -1,0 +1,29 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by ccggyy2002 (Delphi) -->
+
+<struts-config>
+	<form-beans>
+		<form-bean name="ebook" type="com.kurui.kums.ecis.ebook.EBook" />
+		<form-bean name="ebookListForm"
+			type="com.kurui.kums.ecis.ebook.EBookListForm" />
+	</form-beans>
+	<action-mappings>
+		<action name="ebook" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/ebook/ebook" validate="false">
+			<forward name="listEBook" path="/ebook/listEBook.jsp" />
+			<forward name="editEBook" path="/ebook/editEBook.jsp" />
+			<forward name="viewEBook" path="/ebook/viewEBook.jsp" />
+		</action>
+
+		<action name="ebookListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/ebook/ebookList" validate="false" scope="request">
+			<forward name="listEBook" path="/ebook/listEBook.jsp" />
+			<forward name="editEBook" path="/ebook/editEBook.jsp" />
+			<forward name="viewEBook" path="/ebook/viewEBook.jsp" />
+		</action>
+
+		
+	</action-mappings>
+</struts-config>

@@ -53,7 +53,7 @@
 			<param-name>config</param-name>
 			<param-value>
 				/WEB-INF/struts-config.xml , /WEB-INF/struts-config-system.xml ,
-				/WEB-INF/struts-config-right.xml, /WEB-INF/struts-config-upload.xml
+				/WEB-INF/struts-config-right.xml, /WEB-INF/struts-config-upload.xml, /WEB-INF/struts-config-ebook.xml
 			</param-value>
 		</init-param>
 		<init-param>

@@ -22,13 +22,13 @@
 			<url>http://mongo-Java-orm.googlecode.com/svn/maven/repo/</url>
 			<layout>default</layout>
 		</repository>
-		
+		-->
 		<repository>
 			<id>spring-milestone</id>
 			<name>Spring Maven MILESTONE Repository</name>
 			<url>http://maven.springframework.org/milestone</url>
 		</repository>
-		-->
+		
 	</repositories>
 
 	<build>
@@ -66,6 +66,14 @@
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+ 
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>3.0.5.RELEASE</version>
 		</dependency>
@@ -79,10 +87,25 @@
 			<artifactId>spring-beans</artifactId>
 			<version>3.0.5.RELEASE</version>
 		</dependency>
-		<dependency>
+<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
-			<version>2.5.5</version>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-struts</artifactId>
+			<version>3.1.0.M1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>3.0.6.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>3.0.6.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>

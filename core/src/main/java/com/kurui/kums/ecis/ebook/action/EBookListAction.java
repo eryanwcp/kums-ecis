@@ -124,7 +124,9 @@ public class EBookListAction extends BaseAction {
 		return forwardInformPage(inf, mapping, request);
 	}
 
-	public void setEBookBiz(EBookBiz ebookBiz) {
+	public void setEbookBiz(EBookBiz ebookBiz) {
 		this.ebookBiz = ebookBiz;
 	}
+
+
 }
