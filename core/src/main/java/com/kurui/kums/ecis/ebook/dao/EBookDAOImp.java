@@ -10,6 +10,7 @@ import org.springframework.data.document.mongodb.query.Query;
 import com.kurui.kums.base.Constant;
 import com.kurui.kums.base.database.Hql;
 import com.kurui.kums.base.exception.AppException;
+import com.kurui.kums.base.util.StringUtil;
 import com.kurui.kums.ecis.ebook.EBook;
 import com.kurui.kums.ecis.ebook.EBookListForm;
 
@@ -29,28 +30,30 @@ public class EBookDAOImp  implements EBookDAO {
 	
 	
 
-	public void delete(long id) throws AppException {
-		if (id > 0) {
+	public void delete(String id) throws AppException {
+		if (StringUtil.isEmpty(id)==false) {
 //			EBook ebook = (EBook) this.getHibernateTemplate().get(
 //					EBook.class, new Long(id));
 //			this.getHibernateTemplate().delete(ebook);
 		}
 	}
 
-	public long save(EBook ebook) throws AppException {
+	public String save(EBook ebook) throws AppException {
 		mongoTemplate.save(ebook);
 		return ebook.getId();
 	}
 
-	public long update(EBook ebook) throws AppException {
-		if (ebook.getId() > 0) {
+	public String update(EBook ebook) throws AppException {
+		if (StringUtil.isEmpty(ebook.getId())==false) {
 //			mongoTemplate.update(ebook);
 			return ebook.getId();
-		} else
+		} else{
 			throw new IllegalArgumentException("id isn't a valid argument.");
+			
+		}
 	}
 
-	public EBook getEBookById(long id) throws AppException {
+	public EBook getEBookById(String id) throws AppException {
 		EBook ebook = mongoTemplate.findOne("ebooks",
 				new Query(Criteria.where("id").is(id+"")), EBook.class);
 		return ebook;

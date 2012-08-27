@@ -10,13 +10,14 @@ import org.apache.struts.action.ActionMapping;
 import com.kurui.kums.base.BaseAction;
 import com.kurui.kums.base.Inform;
 import com.kurui.kums.base.exception.AppException;
+import com.kurui.kums.base.util.StringUtil;
 import com.kurui.kums.ecis.ebook.EBook;
 import com.kurui.kums.ecis.ebook.EBookListForm;
 import com.kurui.kums.ecis.ebook.biz.EBookBiz;
 
 public class EBookListAction extends BaseAction {
 	private EBookBiz ebookBiz;
-	
+
 	public ActionForward list(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws AppException {
@@ -25,15 +26,13 @@ public class EBookListAction extends BaseAction {
 			ebookListForm = new EBookListForm();
 		}
 		try {
-			ebookListForm.setList(ebookBiz
-					.list(ebookListForm));
+			ebookListForm.setList(ebookBiz.list(ebookListForm));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		request.setAttribute("ebook", ebookListForm);
 		return mapping.findForward("listEBook");
 	}
-	
 
 	public ActionForward view(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
@@ -41,8 +40,7 @@ public class EBookListAction extends BaseAction {
 		String forwardPage = "";
 		try {
 			String ebookId = request.getParameter("id");
-			EBook ebook = ebookBiz
-					.getEBookById(Long.parseLong(ebookId));
+			EBook ebook = ebookBiz.getEBookById(ebookId);
 			request.setAttribute("ebook", ebook);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,15 +65,14 @@ public class EBookListAction extends BaseAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws AppException {
 		EBookListForm ebookListForm = (EBookListForm) form;
-		
-		long ebookId = ebookListForm.getId();
-		if (ebookId < 1) {
-			ebookId = ebookListForm.getSelectedItems()[0];
+
+		String ebookId = ebookListForm.getId();
+		if (StringUtil.isEmpty(ebookId) == false) {
+			ebookId = ebookListForm.getSelectedItems()[0] + "";
 		}
-		
-		if (ebookId > 0) {
-			EBook ebook = ebookBiz
-					.getEBookById(ebookId);
+
+		if (StringUtil.isEmpty(ebookId) == false) {
+			EBook ebook = ebookBiz.getEBookById(ebookId);
 			ebook.setThisAction("update");
 			request.setAttribute("ebook", ebook);
 		} else {
@@ -89,11 +86,11 @@ public class EBookListAction extends BaseAction {
 			throws AppException {
 		EBookListForm ebookListForm = (EBookListForm) form;
 		// String forwardPage = "";
-		long id = 0;
+		String id = "";
 		Inform inf = new Inform();
 		try {
 			for (int i = 0; i < ebookListForm.getSelectedItems().length; i++) {
-				id = ebookListForm.getSelectedItems()[i];
+				id = ebookListForm.getSelectedItems()[i] + "";
 				ebookBiz.deleteEBook(id);
 			}
 			return list(mapping, form, request, response);
@@ -106,6 +103,5 @@ public class EBookListAction extends BaseAction {
 	public void setEbookBiz(EBookBiz ebookBiz) {
 		this.ebookBiz = ebookBiz;
 	}
-
 
 }

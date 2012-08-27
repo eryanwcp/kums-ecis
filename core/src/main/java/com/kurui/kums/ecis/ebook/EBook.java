@@ -7,17 +7,17 @@ public class EBook extends org.apache.struts.action.ActionForm implements
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long id = Long.valueOf(0);
+	private String id = "";
 	private String title = "";
 	private String author = "";
 	private String catalog = "";// 目录
 	private String content = "";// 内容
-	
+
 	protected Long type;
 	protected Long status;
-	
+
 	// 类型
-	public static final long TYPE_1 = 1;// 
+	public static final long TYPE_1 = 1;//
 
 	// 状态
 	public static final long STATES_1 = 1;// 有效
@@ -25,38 +25,28 @@ public class EBook extends org.apache.struts.action.ActionForm implements
 
 	public EBook() {
 	}
-	
-	
 
 	public Long getType() {
 		return type;
 	}
 
-
-
 	public void setType(Long type) {
 		this.type = type;
 	}
-
-
 
 	public Long getStatus() {
 		return status;
 	}
 
-
-
 	public void setStatus(Long status) {
 		this.status = status;
 	}
 
-
-
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -98,14 +88,14 @@ public class EBook extends org.apache.struts.action.ActionForm implements
 				+ ", content=" + content + "]";
 	}
 
-	public EBook(long id, String title, String author, String content) {
+	public EBook(String id, String title, String author, String content) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.author = author;
 		this.content = content;
 	}
-	
+
 	public Object clone() {
 		Object o = null;
 		try {

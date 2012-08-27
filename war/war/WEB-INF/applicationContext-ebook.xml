@@ -17,9 +17,6 @@
 		<property name="ebookBiz">
 			<ref bean="ebookBiz" />
 		</property>
-		<property name="loginlogBiz">
-			<ref bean="loginlogBiz" />
-		</property>
 	</bean>
 
 	<bean id="ebookBiz" class="com.kurui.kums.ecis.ebook.biz.EBookBizImp">

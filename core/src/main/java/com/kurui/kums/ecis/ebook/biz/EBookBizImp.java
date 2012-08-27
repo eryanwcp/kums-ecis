@@ -14,7 +14,7 @@ public class EBookBizImp implements EBookBiz {
 		return ebookDAO.list(ebookForm);
 	}
 
-	public void delete(long id) throws AppException {
+	public void delete(String id) throws AppException {
 		try {
 			ebookDAO.delete(id);
 		} catch (Exception e) {
@@ -22,21 +22,21 @@ public class EBookBizImp implements EBookBiz {
 		}
 	}
 
-	public void deleteEBook(Long ebookId) throws AppException {
+	public void deleteEBook(String ebookId) throws AppException {
 		EBook ebook = getEBookById(ebookId);
 		ebook.setStatus(EBook.STATES_0);// 将状态变为无效
 		update(ebook);
 	}
 
-	public long save(EBook ebook) throws AppException {
+	public String save(EBook ebook) throws AppException {
 		return ebookDAO.save(ebook);
 	}
 
-	public long update(EBook ebook) throws AppException {
+	public String update(EBook ebook) throws AppException {
 		return ebookDAO.update(ebook);
 	}
 
-	public EBook getEBookById(long ebookId) throws AppException {
+	public EBook getEBookById(String ebookId) throws AppException {
 		return ebookDAO.getEBookById(ebookId);
 	}
 

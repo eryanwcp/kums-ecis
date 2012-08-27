@@ -11,6 +11,8 @@ import org.apache.struts.action.ActionRedirect;
 import com.kurui.kums.base.BaseAction;
 import com.kurui.kums.base.Inform;
 import com.kurui.kums.base.exception.AppException;
+import com.kurui.kums.base.util.NoUtil;
+import com.kurui.kums.base.util.StringUtil;
 import com.kurui.kums.ecis.ebook.EBook;
 import com.kurui.kums.ecis.ebook.biz.EBookBiz;
 import com.kurui.kums.right.UserRightInfo;
@@ -28,7 +30,7 @@ public class EBookAction extends BaseAction {
 				"URI");
 		try {
 			EBook ebook = new EBook();
-
+			ebook.setId(NoUtil.getCurrentRandomNo());
 			ebook.setTitle(ebookForm.getTitle());
 			ebook.setAuthor(ebookForm.getAuthor());
 			ebook.setCatalog(ebookForm.getCatalog());
@@ -36,9 +38,9 @@ public class EBookAction extends BaseAction {
 			// ebook.setMemo(ebookForm.getMemo());
 			ebook.setType(ebookForm.getType());
 			ebook.setStatus(ebookForm.getStatus());
-			long num = ebookBiz.save(ebook);
+			String result = ebookBiz.save(ebook);
 
-			if (num > 0) {
+			if (StringUtil.isEmpty(result)==false) {
 				return redirectList(ebook);
 			} else {
 				inf.setMessage("您添加数据失败！");
@@ -58,7 +60,7 @@ public class EBookAction extends BaseAction {
 		UserRightInfo uri = (UserRightInfo) request.getSession().getAttribute(
 				"URI");
 		try {
-			if (ebookForm.getId() > 0) {
+			if (StringUtil.isEmpty(ebookForm.getId())==false) {
 				EBook ebook = ebookBiz.getEBookById(ebookForm.getId());
 				ebook.setTitle(ebookForm.getTitle());
 				ebook.setAuthor(ebookForm.getAuthor());
@@ -68,9 +70,9 @@ public class EBookAction extends BaseAction {
 				ebook.setType(ebookForm.getType());
 				ebook.setStatus(ebookForm.getStatus());
 
-				long flag = ebookBiz.update(ebook);
+				String result = ebookBiz.update(ebook);
 
-				if (flag > 0) {
+				if (StringUtil.isEmpty(result)==false) {
 					return redirectList(ebook);
 				} else {
 					inf.setMessage("您修改数据失败！");
@@ -86,7 +88,7 @@ public class EBookAction extends BaseAction {
 	}
 
 	public ActionForward redirectList(EBook ebook) {
-		ActionRedirect redirect = new ActionRedirect("/market/ebookList.do");
+		ActionRedirect redirect = new ActionRedirect("/ebook/ebookList.do");
 		redirect.addParameter("thisAction", "list");
 		if (ebook != null) {
 			redirect.addParameter("type", ebook.getType());

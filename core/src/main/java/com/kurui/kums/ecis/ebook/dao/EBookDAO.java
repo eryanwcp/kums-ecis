@@ -10,13 +10,13 @@ public interface EBookDAO {
 
 	public List list(EBookListForm ebookForm) throws AppException;
 
-	public void delete(long id) throws AppException;
+	public void delete(String id) throws AppException;
 
-	public long save(EBook ebook) throws AppException;
+	public String save(EBook ebook) throws AppException;
 
-	public long update(EBook ebook) throws AppException;
+	public String update(EBook ebook) throws AppException;
 
-	public EBook getEBookById(long ebookId) throws AppException;
+	public EBook getEBookById(String ebookId) throws AppException;
 
 	public List<EBook> getEBookList() throws AppException;
 

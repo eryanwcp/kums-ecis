@@ -4,22 +4,16 @@ import com.kurui.kums.base.ListActionForm;
 
 public class EBookListForm extends ListActionForm {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
-	private long id = Long.valueOf(0);
-	
+	private String id = "";
 	private String keywords="";
 
-	
-
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

@@ -10,15 +10,15 @@ public interface EBookBiz {
 
 	public List list(EBookListForm form) throws AppException;
 
-	public void delete(long id) throws AppException;
+	public void delete(String id) throws AppException;
 
-	public void deleteEBook(Long ebookId) throws AppException;
+	public void deleteEBook(String ebookId) throws AppException;
 
-	public long save(EBook ebook) throws AppException;
+	public String save(EBook ebook) throws AppException;
 
-	public long update(EBook ebook) throws AppException;
+	public String update(EBook ebook) throws AppException;
 
-	public EBook getEBookById(long ebookId)
+	public EBook getEBookById(String ebookId)
 			throws AppException;
 
 	public List<EBook> getEBookList() throws AppException;
