@@ -34,27 +34,6 @@ public class EBookListAction extends BaseAction {
 		return mapping.findForward("listEBook");
 	}
 	
-	/***************************************************************************
-	 * 选择产品
-	 **************************************************************************/
-	public ActionForward selectFinanceEBook(ActionMapping mapping,
-			ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws AppException {
-		String forwardPage = "";
-		EBookListForm ebookListForm = (EBookListForm) form;
-		ebookListForm.setList(ebookBiz.list(ebookListForm));
-		ebookListForm.setThisAction("selectFinanceEBook");
-		
-		request.setAttribute("ebookListForm", ebookListForm);
-//		System.out.println("rowId:"+ebookListForm.getRowId());
-		forwardPage = "listEBookSelect";
-		return (mapping.findForward(forwardPage));
-	}
-	public static void main(String[] args) {
-		String aa="5,8，";
-		aa=aa.substring(0,aa.lastIndexOf(","));
-		System.out.println(aa);
-	}
 
 	public ActionForward view(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)

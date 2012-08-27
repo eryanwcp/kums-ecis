@@ -127,44 +127,11 @@
 										<div>&nbsp;序号</div>
 									</th>
 									<th>
-										<div>类型</div>
+										<div>标题</div>
 									</th>
 									<th>
-										<div>客户</div>
-									</th>
-									<th>
-										<div>职位</div>
-									</th>
-									<th>
-										<div>关系</div>
-									</th>
-									<th style="display: none">
-										<div>QQ</div>
-									</th>
-									<th>
-										<div>手机</div>
-									</th>
-									<th style="display: none">
-										<div>居住地</div>
-									</th>
-									<th style="display: none">
-										<div>额度|积分</div>
-									</th>
-									<th>
-										<div>来源</div>
-									</th>
-									<th>
-										<div>忠诚度</div>
-									</th>
-									<th>
-										<div>亲密度</div>
-									</th>
-									<th>
-										<div>资本量</div>
-									</th>
-									<th>
-										<div>专业能力</div>
-									</th>
+										<div>作者</div>
+									</th>								
 									<th>
 										<div>操作</div>
 									</th>
@@ -180,8 +147,6 @@
 
 										<td><c:out value="${ebook.title}" /></td>
 										<td><c:out value="${ebook.author}" /></td>
-										<td></td>
-										<td></td>
 										<td><a
 											href="<%=path%>/ebook/ebookList.do?thisAction=view&id=<c:out value="${ebook.id}" />">查看</a>
 

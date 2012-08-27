@@ -11,7 +11,6 @@ import org.apache.struts.action.ActionRedirect;
 import com.kurui.kums.base.BaseAction;
 import com.kurui.kums.base.Inform;
 import com.kurui.kums.base.exception.AppException;
-import com.kurui.kums.base.util.KumsNoUtil;
 import com.kurui.kums.ecis.ebook.EBook;
 import com.kurui.kums.ecis.ebook.biz.EBookBiz;
 import com.kurui.kums.right.UserRightInfo;
@@ -95,7 +94,8 @@ public class EBookAction extends BaseAction {
 		return redirect;
 	}
 
-	public void setEBookBiz(EBookBiz ebookBiz) {
+
+	public void setEbookBiz(EBookBiz ebookBiz) {
 		this.ebookBiz = ebookBiz;
 	}
 }

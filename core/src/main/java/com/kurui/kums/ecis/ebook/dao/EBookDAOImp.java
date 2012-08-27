@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.document.mongodb.MongoTemplate;
+import org.springframework.data.document.mongodb.query.Criteria;
+import org.springframework.data.document.mongodb.query.Query;
 
 import com.kurui.kums.base.Constant;
 import com.kurui.kums.base.database.Hql;
@@ -17,6 +19,11 @@ public class EBookDAOImp  implements EBookDAO {
 	public List list(EBookListForm ebookListForm) throws AppException {
 		List<EBook> listEBook = mongoTemplate.getCollection("ebooks",
 				EBook.class);
+		
+		if(listEBook!=null){
+			ebookListForm.setTotalRowCount(listEBook.size());
+		}
+		
 		return listEBook;
 	}
 	
@@ -31,38 +38,27 @@ public class EBookDAOImp  implements EBookDAO {
 	}
 
 	public long save(EBook ebook) throws AppException {
-//		this.getHibernateTemplate().save(ebook);
+		mongoTemplate.save(ebook);
 		return ebook.getId();
 	}
 
 	public long update(EBook ebook) throws AppException {
 		if (ebook.getId() > 0) {
-//			this.getHibernateTemplate().update(ebook);
+//			mongoTemplate.update(ebook);
 			return ebook.getId();
 		} else
 			throw new IllegalArgumentException("id isn't a valid argument.");
 	}
 
 	public EBook getEBookById(long id) throws AppException {
-		Hql hql = new Hql();
-		hql.add("from EBook p where p.id=" + id);
-
-//		Query query = this.getQuery(hql);
-//		EBook ebook = null;
-//		if (query != null && query.list() != null && query.list().size() > 0) {
-//			ebook = (EBook) query.list().get(0);
-//		}
-		EBook ebook=new EBook();
+		EBook ebook = mongoTemplate.findOne("ebooks",
+				new Query(Criteria.where("id").is(id+"")), EBook.class);
 		return ebook;
 	}
 
 	public List<EBook> getEBookList() throws AppException {
-		List<EBook> list = new ArrayList<EBook>();
-		Hql hql = new Hql();
-		hql.add(" from EBook p  where 1=1 ");
-		hql.add(" and p.status=" + EBook.STATES_1);
-		hql.add(" order by p.type ");
-//		return this.list(hql);
+		List<EBook> list = mongoTemplate.getCollection("ebooks",
+				EBook.class);
 		return list;
 	}
 

@@ -26,8 +26,8 @@
 							<td width="10" class="tbll"></td>
 							<td valign="top" class="body">
 								<c:import url="../page/mainTitle.jsp" charEncoding="UTF-8">
-									<c:param name="title1" value="客户管理" />
-									<c:param name="title2" value="查看客户信息" />
+									<c:param name="title1" value="知识库管理" />
+									<c:param name="title2" value="查看电子书" />
 								</c:import>
 								<hr>
 								<table width="100%" cellpadding="0" cellspacing="0" border="0"
@@ -52,16 +52,15 @@
 											目录
 										</td>
 										<td style="text-align: left" colspan="3">
-											<c:out value="${ebook.catalog}" />											
+											<c:out value="${ebook.catalog}" escapeXml="false" />											
 										</td>
 											<tr>
 										<td class="lef">
 											内容
 										</td>
 										<td style="text-align: left" colspan="3">
-											<c:out value="${ebook.content}" />											
-										</td>
-										
+											<c:out value="${ebook.content}" escapeXml="false"></c:out>											
+										</td>										
 									</tr>
 								
 								</table>
