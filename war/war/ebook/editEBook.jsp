@@ -14,40 +14,41 @@
 <link href="../_css/global.css" rel="stylesheet" type="text/css" />
 <script src="../_js/prototype/common.js" type="text/javascript"></script>
 <script src="../_js/base/FormUtil.js" type="text/javascript"></script>
+<script src="../_js/xheditor.js" type="text/javascript"></script>
+<script src="../_js/xheditor_plugins/ubb.js" type="text/javascript"></script>
 </head>
 <script type="text/javascript">
+	<!--
+	function addEditorValue(){
+				document.forms[0].catalog.value= window.content1.getHTML(); 		
+			}
+			
+			function setEditorHTML(){
+			//alert("aaa")
+				window.content1.setHTML(document.forms[0].catalog.value);
+			}
+		-->	
 		function add(){	
-			var name=document.forms[0].name.value;
-			if(name==""){
-				alert("请输入客户姓名")
+			var title=document.forms[0].title.value;
+			if(title==""){
+				alert("请输入标题")
 				return false;
 			}
+			
+			//addEditorValue();
+			
 			var thisAction =document.forms[0].thisAction.value;			   
 		    document.forms[0].action="<%=path%>/ebook/ebook.do?thisAction="+thisAction;
 		    document.forms[0].submit();
 		}		
 		
 			
-		function parseIdCard(){
-			var idCard=document.forms[0].cardNo.value;
-			
-			if(idCard!=""&&idCard.length>14){
-				ebookBiz.getSexByIdCard(idCard,function(sexValue){
-					setRadioByValue(document.forms[0].sex,sexValue);
-				});
-				
-				ebookBiz.getBirthStrByIdCard(idCard,function(birthday){
-					document.forms[0].birthday.value=birthday;
-				});
-				
-				ebookBiz.getAreaTextByCode(idCard,function(areaText){
-					document.forms[0].nativeCountry.value=areaText
-				});
-				
-			}
-		}
+		
 	</script>
-<body>
+	<!-- 
+<body onLoad="setEditorHTML();">
+ -->
+ <body>
 	<div id="mainContainer">
 		<div id="container">
 			<html:form action="/ebook/ebook.do" method="post">
@@ -68,12 +69,13 @@
 											property="title" name="title" value="${ebook.title}"
 											styleClass="colorblue2 p_5" style="width:800px;"></html:text>
 										<html:hidden property="id" value="${ebook.id}"></html:hidden>
-									
-											
-											<input name="label" type="button" class="button1" value="返 回" onclick="window.history.back();">
-											<input name="label" type="button" class="button1" value="提交" onclick="add();">
-											<input name="label" type="reset" class="button1" value="重 置">
-										
+
+										<html:hidden property="thisAction" name="ebook" /> <input
+										name="label" type="button" class="button1" value="返 回"
+										onclick="window.history.back();"> <input name="label"
+										type="button" class="button1" value="提交" onclick="add();">
+										<input name="label" type="reset" class="button1" value="重 置">
+
 									</td>
 								</tr>
 								<tr>
@@ -84,8 +86,16 @@
 								</tr>
 								<tr>
 									<td class="lef">目录</td>
-									<td style="text-align: left" colspan="3"><html:textarea
-											property="catalog" name="ebook" cols="120" rows="20" value="${ebook.catalog}"></html:textarea>
+									<td style="text-align: left" colspan="3">
+										 <html:textarea
+											property="catalog" name="ebook" cols="120" rows="20"
+											value="${ebook.catalog}"></html:textarea>
+										<!--	 <html:hidden property="catalog" name="ebook"></html:hidden>
+										<iframe ID="eWebEditor1" name="content1"
+											src="../ewebeditor/ewebeditor.htm?id=content1&style=coolblue"
+											frameborder="1" scrolling="auto" align="top" width="680"
+											height="500" />
+											 -->
 									</td>
 								</tr>
 								<tr>
@@ -108,8 +118,7 @@
 							</table>
 							<table width="100%" style="margin-top: 5px;">
 								<tr>
-									<td align="center" colspan="4"><html:hidden
-											property="thisAction" name="ebook" /> <input name="label"
+									<td align="center" colspan="4"><input name="label"
 										type="button" class="button1" value="返 回"
 										onclick="window.history.back();"> <input name="label"
 										type="button" class="button1" value="提交" onclick="add();">

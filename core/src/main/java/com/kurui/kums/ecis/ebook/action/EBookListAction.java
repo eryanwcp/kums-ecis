@@ -68,7 +68,10 @@ public class EBookListAction extends BaseAction {
 
 		String ebookId = ebookListForm.getId();
 		if (StringUtil.isEmpty(ebookId) == false) {
-			ebookId = ebookListForm.getSelectedItems()[0] + "";
+			if(ebookListForm.getSelectedItems()!=null&&ebookListForm.getSelectedItems().length>0){
+					ebookId = ebookListForm.getSelectedItems()[0] + "";				
+			}
+			
 		}
 
 		if (StringUtil.isEmpty(ebookId) == false) {
