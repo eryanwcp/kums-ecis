@@ -15,7 +15,6 @@ import com.kurui.kums.base.util.NoUtil;
 import com.kurui.kums.base.util.StringUtil;
 import com.kurui.kums.ecis.ebook.EBook;
 import com.kurui.kums.ecis.ebook.biz.EBookBiz;
-import com.kurui.kums.right.UserRightInfo;
 
 public class EBookAction extends BaseAction {
 	private EBookBiz ebookBiz;
@@ -23,11 +22,11 @@ public class EBookAction extends BaseAction {
 	public ActionForward insert(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws AppException {
-		String forwardPage = "";
+//		String forwardPage = "";
 		EBook ebookForm = (EBook) form;
 		Inform inf = new Inform();
-		UserRightInfo uri = (UserRightInfo) request.getSession().getAttribute(
-				"URI");
+//		UserRightInfo uri = (UserRightInfo) request.getSession().getAttribute(
+//				"URI");
 		try {
 			EBook ebook = new EBook();
 			ebook.setId(NoUtil.getCurrentRandomNo());
@@ -57,8 +56,8 @@ public class EBookAction extends BaseAction {
 			throws AppException {
 		EBook ebookForm = (EBook) form;
 		Inform inf = new Inform();
-		UserRightInfo uri = (UserRightInfo) request.getSession().getAttribute(
-				"URI");
+//		UserRightInfo uri = (UserRightInfo) request.getSession().getAttribute(
+//				"URI");
 		try {
 			if (StringUtil.isEmpty(ebookForm.getId())==false) {
 				EBook ebook = ebookBiz.getEBookById(ebookForm.getId());

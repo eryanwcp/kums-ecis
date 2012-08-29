@@ -15,7 +15,12 @@ public class EBookDAOImp  implements EBookDAO {
 	private MongoTemplate mongoTemplate;
 
 	public List list(EBookListForm ebookListForm) throws AppException {
-		List<EBook> listEBook = mongoTemplate.getCollection("ebook",
+//		Query query=new Query(Criteria.where("title").in(ebookListForm.getKeywords()));//in 全部包含
+		
+		String keywords=ebookListForm.getKeywords();
+		Query query=new Query(Criteria.where("title").is(keywords));
+		
+		List<EBook> listEBook = mongoTemplate.find("ebook",query,
 				EBook.class);
 		
 		if(listEBook!=null){
