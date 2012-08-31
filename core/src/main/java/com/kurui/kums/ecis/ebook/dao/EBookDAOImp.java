@@ -1,6 +1,7 @@
 package com.kurui.kums.ecis.ebook.dao;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.springframework.data.document.mongodb.MongoTemplate;
 import org.springframework.data.document.mongodb.query.Criteria;
@@ -15,10 +16,24 @@ public class EBookDAOImp  implements EBookDAO {
 	private MongoTemplate mongoTemplate;
 
 	public List list(EBookListForm ebookListForm) throws AppException {
-//		Query query=new Query(Criteria.where("title").in(ebookListForm.getKeywords()));//in 全部包含
 		
 		String keywords=ebookListForm.getKeywords();
-		Query query=new Query(Criteria.where("title").is(keywords));
+		//in 全部包含
+		//regex 正则匹配
+		Criteria criteriaTitle=Criteria.where("title").regex(".*?"+keywords+".*");
+		Criteria criteriaCatalog=Criteria.where("catalog").regex(".*?"+keywords+".*");
+		Criteria criteriaContent=Criteria.where("content").regex(".*?"+keywords+".*");
+		Query query=new Query(criteriaCatalog).limit(10);
+		
+//		Pattern pattern = Pattern.compile("^.*" + keywords+ ".*$",Pattern.CASE_INSENSITIVE);  
+
+//		query.filter("name", pattern);  
+//		List<EBook> persons = query.asList();  
+//		测试了一下不怎么好用，如果把pattern修改为如下内容就可以了
+//	pattern = Pattern.compile(".*" + keywords+ ".$",keywords+ "%' " ,Pattern.CASE_INSENSITIVE);  
+
+//		即：去掉正则表达式的^和$就能匹配所有data了
+	
 		
 		List<EBook> listEBook = mongoTemplate.find("ebook",query,
 				EBook.class);
