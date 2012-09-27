@@ -145,7 +145,8 @@
 												value="${status.count+(ebookListForm.intPage-1)*ebookListForm.perPageNum}" />
 										</td>
 
-										<td><c:out value="${ebook.title}" /></td>
+										<td><a
+											href="<%=path%>/ebook/ebookList.do?thisAction=view&id=<c:out value="${ebook.id}" />"><c:out value="${ebook.title}" /></a></td>
 										<td><c:out value="${ebook.author}" /></td>
 										<td><a
 											href="<%=path%>/ebook/ebookList.do?thisAction=view&id=<c:out value="${ebook.id}" />">查看</a>
